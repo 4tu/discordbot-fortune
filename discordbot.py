@@ -1,3 +1,4 @@
+import os
 from discord.ext import commands
 
 INITIAL_EXTENSIONS = [
@@ -22,5 +23,8 @@ class MyBot(commands.Bot):
 
 
 if __name__ == '__main__':
-    bot = MyBot(command_prefix='!')
-    bot.run('Nzg1MjcxMDI5MTE0NzMyNTU1.X81aog.aWTFzUizaFTMSnQVL9fyAos2sns')
+    if os.getenv('TOKEN'):
+        bot = MyBot(command_prefix='!')
+        bot.run(os.getenv('TOKEN'))
+    else:
+        print('plz env "TOKEN"')
